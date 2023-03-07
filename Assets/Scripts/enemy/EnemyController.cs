@@ -7,7 +7,6 @@ public class EnemyController : MonoBehaviour
     public float stoppingDistance = 1f;
     public float retreatDistance = 0.5f;
     public Transform target;
-
     private void FixedUpdate()
     {
         if (target == null)
@@ -27,4 +26,6 @@ public class EnemyController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.position, -speed * Time.deltaTime);
         }
     }
+    
+    
 }

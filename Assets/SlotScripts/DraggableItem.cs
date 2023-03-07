@@ -14,7 +14,6 @@ public class DraggableItem : MonoBehaviour , IBeginDragHandler,IEndDragHandler,I
     public void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        
     }
     public void OnBeginDrag(PointerEventData eventData)
     {       
@@ -24,12 +23,11 @@ public class DraggableItem : MonoBehaviour , IBeginDragHandler,IEndDragHandler,I
         transform.SetAsLastSibling();
         image.raycastTarget = false;
     }
-    //public GameObject spawnolacak;
+  
     public void OnDrag(PointerEventData eventData)
     {
         Debug.Log("OnDrag");
         transform.position = Input.mousePosition;
-        //spawnolacak.transform.position = eventData.pointerCurrentRaycast.screenPosition;
     }
     public void OnEndDrag(PointerEventData eventData)
     {        
@@ -47,6 +45,4 @@ public class DraggableItem : MonoBehaviour , IBeginDragHandler,IEndDragHandler,I
            obj.transform.localScale = new Vector3(1f, 1f, 1f);  
        }
     }
-
-  
 }

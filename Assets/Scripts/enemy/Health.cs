@@ -2,7 +2,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float maxHealth = 100f;
-    private float _currentHealth;
+    public float _currentHealth;
     private void Start()
     {
         _currentHealth = maxHealth;

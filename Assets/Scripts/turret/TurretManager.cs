@@ -12,24 +12,18 @@ public class TurretManager : MonoBehaviour
     private SpawnManager _spawnManager;
 
     List<Transform> _enemies = new List<Transform>();
-
-    public float _range;
+ 
     private AmmoPool _ammoPool;
-
-    // public GameObject Bullet;
-   // public Transform head, barrel;
-    public float FireRate, NextFire;
+    private Transform close;
     
     public Xekseni xekseni;
     public Transform transformRotate;
-    private Transform close;
+    public float _range;
     private void Start()
     {
         _ammoPool = FindObjectOfType<AmmoPool>();
-      //  target=GameObject.FindObjectOfType<SpawnManager>();
         _spawnManager = GameObject.FindObjectOfType<SpawnManager>(); // ??
         StartCoroutine(Fire());
-
     }
     private void Update()
     { 
@@ -45,23 +39,8 @@ public class TurretManager : MonoBehaviour
         if (close != null)
         {
             xekseni.Xeksen(close);
-            
-            
-            
-            // Debug.Log(close.GetInstanceID()+"2");
-            // transformRotate.LookAt(close);
-
-            // if (Time.time >= NextFire)
-            // {
-            //     NextFire = Time.time + 1f / FireRate;
-            //     Shoot(transformRotate.transform.rotation);
-            //     // if (_ammoPool._bulletCoroutine is null) return;//mermi biterse 
-            //     // StopCoroutine(_ammoPool._bulletCoroutine);
-            //     // _ammoPool._bulletCoroutine = null;
-            // }
         }
     }
-
     private WaitForSeconds waitForHalfSecond = new WaitForSeconds(.25f);
     IEnumerator Fire()
     {
@@ -69,23 +48,17 @@ public class TurretManager : MonoBehaviour
         if(close!= null)
             Shoot(transformRotate.transform.rotation);
         StartCoroutine(Fire());
-
     }
-    
     public Transform GetClose (List<Transform> theList)
     {
         if (theList.Count == 0)
             return null;
         
         var close = theList.OrderBy(x => Vector3.Distance(transform.position, x.transform.position))?.First();
-        //Debug.Log(close.GetInstanceID());
         return close;
     }
-    //public AmmoPool _ammoPool;
     void Shoot(Quaternion x)
     {
         _ammoPool.CaLL(x);
-        //GameObject clone = Instantiate(Bullet, barrel.position, transform.rotation);
-      //  clone.GetComponent<Rigidbody>().AddForce(transform.forward * 250);
     }
 }
