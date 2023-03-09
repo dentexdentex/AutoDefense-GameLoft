@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  _currentHealth: 0
 --- !u!114 &3296859124533073204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,9 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  stoppingDistance: 1
-  retreatDistance: 0.5
-  target: {fileID: 1467208125537188483, guid: 8ac6bd34faabe47168950fc0049bb1a6, type: 3}
+  stoppingDistance: 2
+  retreatDistance: 0
 --- !u!54 &-1401884197788253443
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -141,7 +141,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

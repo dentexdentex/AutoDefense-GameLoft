@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - area
+  - turret
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - bullet
   - enemy
-  - 
+  - base
   - 
   - 
   - 

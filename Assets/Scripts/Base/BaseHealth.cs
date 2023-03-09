@@ -1,32 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class BaseHealth : MonoBehaviour
+namespace Base
 {
-    private float maxHealth = 300f;
-    public float currentBaseHealth;
-    private float _damage = 25f;
+    public class BaseHealth : MonoBehaviour
+    {
+        public static BaseHealth Instance;
+    
+        public float currentBaseHealth=300;
+        private float _damage = 25f;
 
-    private void Start()
-    {
-        currentBaseHealth = maxHealth;
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy"){ 
-            TakeBaseDamage(_damage);
-        }
-    }
-     void TakeBaseDamage(float amount)
-    {
-        currentBaseHealth -= amount;
-        if (currentBaseHealth <= 0f)
+        private void Awake()
         {
-            Time.timeScale = 0f;
-            //gameObject.gameObject.transform.position = new Vector3(11000, 10001, 1000);
-           // gameObject.SetActive(false);
+            if (Instance == null)
+                Instance = this;
+        }
+        private void Start()
+        {
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == "Enemy"){ 
+                TakeBaseDamage(_damage);
+                Debug.Log(currentBaseHealth);
+                Debug.Log(other.name);
+            }
+        }
+        void TakeBaseDamage(float amount)
+        {
+            currentBaseHealth -= amount;
+            if (currentBaseHealth <= 0f)
+            {
+                Time.timeScale = 0f;
+                //gameObject.gameObject.transform.position = new Vector3(11000, 10001, 1000);
+                // gameObject.SetActive(false);
+            }
         }
     }
 }

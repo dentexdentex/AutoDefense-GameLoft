@@ -7,11 +7,13 @@ public class Range : MonoBehaviour
     public LineRenderer circleRenderer; 
     void Start()
     {
-        DrawCircle(1000, 15f);
+        DrawCircle();
     }
 
-    void DrawCircle(int steps,float radius)
+    public void DrawCircle()
     {
+        int steps = 1000;
+        float radius = 15F;
         circleRenderer.positionCount = steps;
         for (int currentStep = 0; currentStep < steps;currentStep ++)
         {
@@ -26,5 +28,10 @@ public class Range : MonoBehaviour
             Vector3 currentPosition = new Vector3(x, 0, y);
             circleRenderer.SetPosition(currentStep,transform.position + currentPosition);
         }
+    }
+
+    public void ClearLine()
+    {
+        circleRenderer.positionCount = 0;
     }
 }
